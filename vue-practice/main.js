@@ -22,10 +22,15 @@ var app3 = new Vue({
 var app4 = new Vue({
     el: '.app4',
     data: {
-        todos: [
-            { text: '昨天' },
-            { text: '今天' },
-            { text: '明天' }
+        todos: [{
+                text: '昨天'
+            },
+            {
+                text: '今天'
+            },
+            {
+                text: '明天'
+            }
         ]
     }
 })
@@ -83,10 +88,18 @@ Vue.component('todo-item-2', {
 var app_7 = new Vue({
     el: '#app-7',
     data: {
-        groceryList: [
-            { id: 0, text: '吃饭' },
-            { id: 1, text: '睡觉' },
-            { id: 2, text: '打豆豆' }
+        groceryList: [{
+                id: 0,
+                text: '吃饭'
+            },
+            {
+                id: 1,
+                text: '睡觉'
+            },
+            {
+                id: 2,
+                text: '打豆豆'
+            }
         ]
     }
 })
@@ -170,16 +183,22 @@ var for_test = new Vue({
     el: '#for-test',
     data: {
         parentMessage: 'Parent',
-        items: [
-            { message: 'foo' },
-            { message: 'bar' },
+        items: [{
+                message: 'foo'
+            },
+            {
+                message: 'bar'
+            },
         ],
         object: {
             name: 'zxlg',
             age: 24,
             school: 'WHUT'
-        }
+        },
+        otherItem: [
+            'hello',
+            'world'
+        ],
 
-    }
+    },
 })
-

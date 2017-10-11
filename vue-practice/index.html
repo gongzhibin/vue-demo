@@ -211,7 +211,8 @@
         <button v-on:click="toggleLoginType">切换登录模式</button>
         <p>用key管理复用元素：不加key属性，input值不变；加key属性，input值改变</p>
         <p>
-            <code>&lt;label&gt;</label></code>元素仍然会被高效地复用，因为它们没有添加 key 属性</p>
+            <code>&lt;label&gt;</label>
+            </code>元素仍然会被高效地复用，因为它们没有添加 key 属性</p>
 
         <div v-show="OK">
             <p>根据条件展示元素的选项是
@@ -245,15 +246,49 @@
         <ul>
             <li v-for="(item,index) of items">{{parentMessage}} - {{index}} - {{item.message}}</li>
         </ul>
-        <p>在<code>v-for</code>块中，我们拥有对父作用域属性的完全访问权限。<code>v-for</code> 还支持一个可选的第二个参数为当前项的索引。</p>
-        <p>你也可以用 <code>of</code>替代<code>in</code>作为分隔符，因为它是最接近JavaScript迭代器的语法</p>
-    
+        <p>在
+            <code>v-for</code>块中，我们拥有对父作用域属性的完全访问权限。
+            <code>v-for</code> 还支持一个可选的第二个参数为当前项的索引。</p>
+        <p>你也可以用
+            <code>of</code>替代
+            <code>in</code>作为分隔符，因为它是最接近JavaScript迭代器的语法</p>
+
         <h3>对象元素迭代</h3>
-        
+
         <ul>
             <li v-for="(value, key, index) in object">{{index}}. {{key}}: {{value}}</li>
         </ul>
         <p>可提供三个参数：value值，key键，index索引</p>
+
+        <div v-for='item in otherItem' :key='item.id'>{{item}}</div>
+        <p>当 Vue.js 用
+            <code>v-for</code> 正在更新已渲染过的元素列表时，它默认用“就地复用”策略。如果数据项的顺序被改变，Vue 将不会移动 DOM 元素来匹配数据项的顺序， 而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。这个类似
+            Vue 1.x 的
+            <code>track-by="$index"</code> 。</p>
+        <p>这个默认的模式是高效的，但是只适用于
+            <strong>不依赖子组件状态或临时 DOM 状态 (例如：表单输入值) 的列表渲染输出</strong>。</p>
+        <p>为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一
+            <code>key</code> 属性。理想的
+            <code>key</code> 值是每项都有的且唯一的 id。这个特殊的属性相当于 Vue 1.x 的
+            <code>track-by</code> ，但它的工作方式类似于一个属性，所以你需要用
+            <code>v-bind</code> 来绑定动态值：</p>
+
+        <div>
+            <h3>
+                <code>v-for</code>与
+                <code>v-if</code>
+            </h3>
+            <p>当它们处于同一节点，
+                <code>v-for</code> 的优先级比
+                <code>v-if</code> 更高，这意味着
+                <code>v-if</code> 将分别重复运行于每个
+                <code>v-for</code> 循环中。当你想为仅有的
+                <em>一些</em>项渲染节点时，这种优先级的机制会十分有用</p>
+            <p>而如果你的目的是有条件地跳过循环的执行，那么可以将
+                <code>v-if</code> 置于外层元素 (或
+                <code>&lt;template&gt;</code>
+                )上。</p>
+        </div>
     </div>
 
 </body>
